@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora do Volume da Lata de Óleo</title>
+    <link rel="stylesheet" href="calculadora.css">
+</head>
+<body>
+    <h1>Calculadora do Volume da Lata de Óleo</h1>
+    
+    <!-- Inputs para o Raio e a Altura -->
+    <label for="raio">Raio da base (R) em cm:</label>
+    <input type="number" id="raio" placeholder="Digite o raio" required>
+    <br><br>
+
+    <label for="altura">Altura (H) em cm:</label>
+    <input type="number" id="altura" placeholder="Digite a altura" required>
+    <br><br>
+
+    <!-- Botão para Calcular -->
+    <button onclick="calcularVolume()">Calcular Volume</button>
+
+    <h2>Resultado:</h2>
+    <p id="resultado"></p>
+
+    <script>
+        function calcularVolume() {
+            // Obter os valores de raio e altura
+            const raio = parseFloat(document.getElementById("raio").value);
+            const altura = parseFloat(document.getElementById("altura").value);
+            
+            // Obter o elemento onde o resultado será exibido
+            const resultadoDiv = document.getElementById("resultado");
+
+            // Validar se os valores são positivos
+            if (isNaN(raio) || isNaN(altura) || raio <= 0 || altura <= 0) {
+                resultadoDiv.innerHTML = 'Por favor, insira valores válidos para o raio e a altura.';
+                return;
+            }
+
+            // Calcular o volume usando a fórmula: V = π * R² * H
+            const volume = 3.14159 * Math.pow(raio, 2) * altura;
+
+            // Exibir o resultado com duas casas decimais
+            resultadoDiv.innerHTML = `O volume da lata de óleo é: <strong>${volume.toFixed(2)} cm³</strong>`;
+        }
+    </script>
+
+</body>
+</html>
